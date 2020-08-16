@@ -1,0 +1,6 @@
+Cargo.lock
+target/
+*.wat
+app.wasm
+app.wasm.h
+

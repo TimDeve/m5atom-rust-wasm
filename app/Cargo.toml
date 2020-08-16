@@ -1,0 +1,22 @@
+[package]
+name = "m5atom-rust-wasm"
+version = "0.1.0"
+authors = ["Tim Dévé <hi@timdeve.com>"]
+edition = "2018"
+
+[lib]
+path = "src/app.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+numtoa = "0.2"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+opt-level = "s"
+codegen-units = 1
+lto = true
+#debug = true
