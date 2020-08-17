@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+cargo build --release
+cp ./target/wasm32-unknown-unknown/release/m5atom_rust_wasm.wasm ./app.wasm
+
+# Optimize (optional) needs 'binaryen' installed
+if hash wasm-opt 2>/dev/null; then
+  wasm-opt -O3 app.wasm -o app.wasm
+fi
+
+# Strip (optional) needs 'wabt' installed
+if hash wasm-strip 2>/dev/null; then
+  wasm-strip app.wasm
+fi
+
+# Convert to C header
+xxd -i app.wasm > app.wasm.h
+
