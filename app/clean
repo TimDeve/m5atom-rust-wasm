@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+rm -f app.wasm
+rm -f app.wasm.h
+rm -rf target
+
